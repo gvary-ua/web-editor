@@ -20,7 +20,7 @@ const INITIAL_DATA = {
 function App() {
   const [data, setData] = useState(INITIAL_DATA);
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <Nav />
       <div className="w-full">
         <Header />

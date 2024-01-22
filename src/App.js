@@ -22,9 +22,9 @@ function App() {
   return (
     <div className="flex flex-col h-full">
       <Header/>
-      <div className="flex w-full h-full">
+      <div className="flex w-full h-full overflow-y-hidden">
         <Nav className="h-full"/>
-        <main className="py-4 w-full">
+        <main className="py-4 w-full overflow-y-scroll">
           <Editor data={data} onChange={setData} editorblock="editorjs-container" />
         </main>
       </div>

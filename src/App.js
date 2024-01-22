@@ -20,11 +20,11 @@ const INITIAL_DATA = {
 function App() {
   const [data, setData] = useState(INITIAL_DATA);
   return (
-    <div className="flex h-full">
-      <Nav />
-      <div className="w-full">
-        <Header />
-        <main className="py-4">
+    <div className="flex flex-col h-full">
+      <Header/>
+      <div className="flex w-full h-full">
+        <Nav className="h-full"/>
+        <main className="py-4 w-full">
           <Editor data={data} onChange={setData} editorblock="editorjs-container" />
         </main>
       </div>

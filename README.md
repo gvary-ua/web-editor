@@ -43,3 +43,75 @@ Every plugin has it's own defined data structure. So I will list all plugins tha
 | Indentation      | [editorjs-indent-tune](https://www.npmjs.com/package/editorjs-indent-tune)                           |                    ? |         ✅        |
 | Text color       | [editorjs-text-color-plugin](https://www.npmjs.com/package/editorjs-text-color-plugin)               |                    ? |         ❌        |
 | Text background  | doesn't exist                                                                                        |                    ? |         ❌        |
+
+### Block data
+
+This section defines data example and JSON schema for every block.
+
+EditorJS uses [nanoid](https://www.npmjs.com/package/nanoid) for generating unique IDs for blocks. To be more specific, [it generates IDs of 10 characters long](https://github.com/codex-team/editor.js/blob/next/src/components/utils.ts#L662).
+
+10 characters give us [152M IDs](https://zelark.github.io/nano-id-cc/). 
+
+Also each block will have user ID and chapter ID in addition to block ID, thus it is impossible for 1 user to use 152M IDs in 1 chapter.
+
+Some block ID examples: `YTdVxlokok`, `hGpacP0GHt`, `tzTjDCRab9`.
+
+#### Paragraph data
+
+```json
+{
+  "text": "This is text! <b>HTML tags are possible</b>.",
+  "alignment": "left"
+}
+```
+
+#### Header data
+
+```json
+{
+  "text": "Is this a header&gt;?",
+  "level": 2,
+  "alignment": "right"
+}
+```
+
+#### List data
+
+```json
+{
+  "style": "ordered",
+  "items": [
+    {
+      "content": "just a text",
+      "items": []
+    },
+    {
+      "content": "can be nested",
+      "items": [
+        {
+          "content": "i am nested",
+          "items": []
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### Table data
+
+```json
+{
+  "withHeadings": true,
+  "content" [
+    ["Text", "Col2"],
+    ["row2", "row2Col2"]
+  ]
+}
+```
+
+#### Delimiter data
+
+```json
+{}
+```

@@ -31,18 +31,19 @@ Every plugin has it's own defined data structure. So I will list all plugins tha
 ### Supported features
 
 | **Feature name** | **GitHub link**                                                                                      | **Will be in Gvary** | **Ready to use** |
-| Bold             | built-in                                                                                             |                1.0.0 |         ✅        |
-| Italic           | built-in                                                                                             |                1.0.0 |         ✅        |
-| Strikethrough    | [@sotaproject/strikethrough](https://www.npmjs.com/package/@sotaproject/strikethrough)               |                1.0.0 |         ✅        |
-| Underline        | [@editorjs/underline](https://github.com/editor-js/underline)                                        |                1.0.0 |         ✅        |
-| Undo/Redo        | [editorjs-undo](https://github.com/kommitters/editorjs-undo)                                         |                1.0.0 |         ✅        |
-| Drag&Drop        | [editorjs-drag-drop](https://github.com/kommitters/editorjs-drag-drop)                               |                1.0.0 |         ✅        |
-| Alignment        | [editorjs-text-alignment-blocktune](https://www.npmjs.com/package/editorjs-text-alignment-blocktune) | 1.1.0                |         ❌        |
-| Change case      | [editorjs-change-case](https://github.com/maziyank/editorjs-change-case)                             |                    ? |         ✅        |
-| Spoiler          | [editorjs-inline-spoiler-tool](https://www.npmjs.com/package/editorjs-inline-spoiler-tool)           |                    ? |         ❌        |
-| Indentation      | [editorjs-indent-tune](https://www.npmjs.com/package/editorjs-indent-tune)                           |                    ? |         ✅        |
-| Text color       | [editorjs-text-color-plugin](https://www.npmjs.com/package/editorjs-text-color-plugin)               |                    ? |         ❌        |
-| Text background  | doesn't exist                                                                                        |                    ? |         ❌        |
+|------------------|------------------------------------------------------------------------------------------------------|----------------------|------------------|
+| Bold             | built-in                                                                                             |                1.0.0 |         ✅       |
+| Italic           | built-in                                                                                             |                1.0.0 |         ✅       |
+| Strikethrough    | [@sotaproject/strikethrough](https://www.npmjs.com/package/@sotaproject/strikethrough)               |                1.0.0 |         ✅       |
+| Underline        | [@editorjs/underline](https://github.com/editor-js/underline)                                        |                1.0.0 |         ✅       |
+| Undo/Redo        | [editorjs-undo](https://github.com/kommitters/editorjs-undo)                                         |                1.0.0 |         ✅       |
+| Drag&Drop        | [editorjs-drag-drop](https://github.com/kommitters/editorjs-drag-drop)                               |                1.0.0 |         ✅       |
+| Alignment        | [editorjs-text-alignment-blocktune](https://www.npmjs.com/package/editorjs-text-alignment-blocktune) |                1.1.0 |         ❌       |
+| Change case      | [editorjs-change-case](https://github.com/maziyank/editorjs-change-case)                             |                    ? |         ✅       |
+| Spoiler          | [editorjs-inline-spoiler-tool](https://www.npmjs.com/package/editorjs-inline-spoiler-tool)           |                    ? |         ❌       |
+| Indentation      | [editorjs-indent-tune](https://www.npmjs.com/package/editorjs-indent-tune)                           |                    ? |         ✅       |
+| Text color       | [editorjs-text-color-plugin](https://www.npmjs.com/package/editorjs-text-color-plugin)               |                    ? |         ❌       |
+| Text background  | doesn't exist                                                                                        |                    ? |         ❌       |
 
 ### Block data
 

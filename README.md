@@ -8,6 +8,10 @@ Before executing npm commands set your Node to `lts/hydrogen`, or `v18.16.1`.
 - `npm start` - start dev server
 - `npm run build` - build optimized version
 
+## Contributing
+
+Please read [Code of conduct](./code-of-conduct.md) before contributing.
+
 ## Editor JS setup
 
 We use [EditorJs](https://editorjs.io/) as our main driver for text editing. It has rich collection of plugins, and nice adaptive UI is built-in. However it also has some limitations, namely, the lack of built-in realtime collaboration, flat structure only (children blocks are almost impossible to make and maintain).

@@ -12,6 +12,11 @@ Before executing npm commands set your Node to `lts/hydrogen`, or `v18.16.1`.
 
 Please read [Code of conduct](./code-of-conduct.md) before contributing.
 
+## Configure your IDE plugins
+
+In the project, we use the **_Prettier - Code formatter_** plugin in VS Code ([VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode")), which implements automatic formatting code with our rules in the **.prettierrc** and according to the automatic sorting of the Tailwind classes using Prettier.
+You also need to set Prettier as the default formatter in VS Code and confirm format on save.
+
 ## Editor JS setup
 
 We use [EditorJs](https://editorjs.io/) as our main driver for text editing. It has rich collection of plugins, and nice adaptive UI is built-in. However it also has some limitations, namely, the lack of built-in realtime collaboration, flat structure only (children blocks are almost impossible to make and maintain).

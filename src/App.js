@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import Editor from "./Editor";
-import Nav from "./components/Nav";
-import Header from "./components/Header";
+import React, { useState } from 'react';
+import Editor from './Editor';
+import Nav from './components/Nav';
+import Header from './components/Header';
 
 // Initial Data
 const INITIAL_DATA = {
   time: new Date().getTime(),
   blocks: [
     {
-      type: "header",
+      type: 'header',
       data: {
-        text: "This is my awesome editor!",
+        text: 'This is my awesome editor!',
         level: 1,
       },
     },
@@ -20,11 +20,11 @@ const INITIAL_DATA = {
 function App() {
   const [data, setData] = useState(INITIAL_DATA);
   return (
-    <div className="flex flex-col h-full">
-      <Header/>
-      <div className="flex w-full h-full overflow-y-hidden">
-        <Nav className="h-full"/>
-        <main className="py-4 w-full overflow-y-scroll">
+    <div className="flex h-full flex-col">
+      <Header />
+      <div className="flex h-full w-full overflow-y-hidden">
+        <Nav className="h-full" />
+        <main className="w-full overflow-y-scroll py-4">
           <Editor data={data} onChange={setData} editorblock="editorjs-container" />
         </main>
       </div>

@@ -1,11 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    extend: {
+      fontFamily: {
+        robotoFlex: 'Roboto Flex, sans-serif',
+      },
+      borderRadius: {
+        10: '2.5rem',
+      },
+    },
     colors: {
-      logo: '#332827', 
+      logo: '#332827',
 
       // Headers, buttons
       primary: {
@@ -27,17 +33,17 @@ module.exports = {
 
         // Alerts, tags, icons
         error: '#FFC3BE', // salmon
-        success: '',  // we don't have this yet
-        warning: '',  // we don't have this yet
+        success: '', // we don't have this yet
+        warning: '', // we don't have this yet
         info: '#D6F2FA', // blue
       },
-      
+
       // Alerts, tags, icons
       error: '#D02E0B', // red
       success: '#22894B', // green
       warning: '#D99C4C', // caramel
       info: '', // we don't have this yet
-      
+
       // Text, borders, icons
       'on-primary': {
         1: '#FFFFFF', // white
@@ -62,8 +68,7 @@ module.exports = {
         info: '#231F20', // black
         success: '#231F20', // black
       },
-    }
+    },
   },
   plugins: [],
-}
-
+};

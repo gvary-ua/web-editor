@@ -1,5 +1,25 @@
 # Web editor
 
+## Table of Contents
+
+- [Web editor](#web-editor)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Contributing](#contributing)
+  - [Configure your IDE plugins](#configure-your-ide-plugins)
+  - [Editor JS setup](#editor-js-setup)
+    - [Supported blocks](#supported-blocks)
+    - [Supported features](#supported-features)
+    - [Block data](#block-data)
+      - [Paragraph data](#paragraph-data)
+      - [Header data](#header-data)
+      - [List data](#list-data)
+      - [Table data](#table-data)
+      - [Delimiter data](#delimiter-data)
+  - [How to deploy](#how-to-deploy)
+
+## About
+
 Web editor is a Notion-like SPA. It is a block-based text editor which is fine-tuned for the authors.
 
 Before executing npm commands set your Node to `lts/hydrogen`, or `v18.16.1`.

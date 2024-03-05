@@ -125,3 +125,29 @@ Some block ID examples: `YTdVxlokok`, `hGpacP0GHt`, `tzTjDCRab9`.
 ```json
 {}
 ```
+
+## How to deploy
+
+We use [cache-busting strategy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control#caching_static_assets_with_cache_busting) for our assets.
+
+1. Clear `build/` folder
+2. Build project with `npm run build`
+3. Login to AWS SSO page and go to `dev` account
+4. Find `editor.dev.gvary.com` bucket in S3
+5. Upload `index.html` with `Cache-Control` set to `no-cache`
+
+![s3-upload-index](docs/s3-upload-index.png)
+
+6. Upload rest of the files with `Cache-Control` set to `max-age=31536000, immutable`
+
+Done!
+
+If your page didn't update do the following:
+
+7. Find `editor.dev.gvary.com` distribution in CloudFront
+8. Go to `Invalidations` tab
+9. Press `Create Invalidation`
+10. Input `/index.html`
+11. Wait till status is `Completed`
+
+Done!

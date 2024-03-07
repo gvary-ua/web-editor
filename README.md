@@ -17,6 +17,8 @@
       - [Table data](#table-data)
       - [Delimiter data](#delimiter-data)
   - [How to deploy](#how-to-deploy)
+    - [Using GitHub Actions](#using-github-actions)
+    - [Manually](#manually)
 
 ## About
 
@@ -147,6 +149,16 @@ Some block ID examples: `YTdVxlokok`, `hGpacP0GHt`, `tzTjDCRab9`.
 ```
 
 ## How to deploy
+
+### Using GitHub Actions
+
+1. Go to [Actions - Deploy workflow](https://github.com/gvary-ua/web-editor/actions/workflows/deploy.yaml)
+2. Press `Run workflow`
+3. Select your branch and env to deploy
+4. Press green `Run workflow`
+5. Done!
+
+### Manually
 
 We use [cache-busting strategy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control#caching_static_assets_with_cache_busting) for our assets.
 

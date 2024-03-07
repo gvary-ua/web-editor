@@ -1,0 +1,44 @@
+name: Deploy to S3
+run-name: ${{ github.actor }} is deploying ${{ github.ref_name }} to ${{ inputs.environment }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to deploy to
+        required: true
+        type: environment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to S3
+        run: |
+          aws s3 cp ./build/ s3://${{ vars.S3_BUCKET }}/ --recursive --exclude \
+            "index.html" --include "*" --metadata \
+            '{"Cache-Control":"max-age=31536000, immutable"}'
+          aws s3 cp ./build/index.html s3://${{ vars.S3_BUCKET }}/ --metadata \
+            '{"Cache-Control":"no-cache"}'

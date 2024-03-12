@@ -23,18 +23,18 @@ const buttonVariants = cva(
   },
 );
 
-function Button({ className, icon = false, icon_pos, size, text, variant, ...props }) {
+function Button({ className, icon = false, iconPos, size, variant, ...props }) {
   return (
     <button
       {...props}
       className={twMerge(
         buttonVariants({ variant, size }),
         className,
-        icon_pos === 'right' ? 'flex-row-reverse' : '',
+        iconPos === 'right' ? 'flex-row-reverse' : '',
       )}
     >
       {icon ? <img src={icon} alt="icon" /> : null}
-      {text}
+      {props.children}
     </button>
   );
 }
@@ -44,6 +44,8 @@ export { Button, buttonVariants };
   /*
     An example of using the button
 
-    <Button className="text-xs" icon="./icons/plus.svg" icon_pos="right" size="base" text={'Запостити'} variant="primary" /> 
+    <Button className="text-xs" icon="./icons/plus.svg" iconPos="right" size="base" variant="primary" >
+      Some text 
+    </Button>
   */
 }

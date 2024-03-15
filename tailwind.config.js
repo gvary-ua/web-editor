@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         robotoFlex: 'Roboto Flex, sans-serif',
-        roslindaleCirillic: 'Roslindale Cyrillic, sans serif',
+        roslindaleCyrillic: 'Roslindale Cyrillic, sans serif',
       },
       borderRadius: {
         10: '2.5rem',

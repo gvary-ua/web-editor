@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { VariantProps, cva } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
-const HVariants = cva('font-roslindaleCirillic text-[8rem] font-normal leading-[7rem]', {
+const HVariants = cva('', {
   variants: {
     level: {
       h1: 'text-[8rem] leading-[7rem] font-roslindaleCirillic',

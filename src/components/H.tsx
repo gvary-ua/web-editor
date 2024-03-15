@@ -6,11 +6,11 @@ import { twMerge } from 'tailwind-merge';
 const HVariants = cva('', {
   variants: {
     level: {
-      h1: 'text-[8rem] leading-[7rem] font-roslindaleCirillic',
+      h1: 'text-[8rem] leading-[7rem] font-roslindaleCyrillic',
       h2: 'text-[8rem] leading-[7rem] font-robotoFlex',
-      h3: 'text-[3rem] leading-[3rem] font-roslindaleCirillic',
+      h3: 'text-[3rem] leading-[3rem] font-roslindaleCyrillic',
       h4: 'text-[2rem] leading-[2rem] font-robotoFlex',
-      h5: 'text-[1rem] leading-[1rem] font-roslindaleCirillic',
+      h5: 'text-[1rem] leading-[1rem] font-roslindaleCyrillic',
     },
     weight: {
       regular: 'font-normal',

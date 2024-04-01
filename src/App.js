@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
-import Nav from './components/Nav';
-import Editor from './components/Editor';
+import Editor from './Editor';
+import { Badge } from './components/Badge';
 
 const INITIAL_DATA = {
   time: new Date().getTime(),
   blocks: [
     {
-      type: 'header',
+      type: 'paragraph',
       data: {
-        text: 'This is my awesome editor!',
+        text: 'A long time ago',
         level: 1,
       },
     },
@@ -17,18 +17,35 @@ const INITIAL_DATA = {
 };
 
 function App() {
-  const [data, setData] = React.useState(INITIAL_DATA);
+  const [data, setData] = useState(INITIAL_DATA);
+  const [titleName, setTitle] = useState('Title Name');
+  const [badge, setBadge] = useState('Book');
+  const [chapters, setChapters] = useState(['Chapter Name']);
+
+  const requestData = () => {
+    setData(INITIAL_DATA);
+    setTitle('Title Name');
+    setChapters(['Chapter Name']);
+    setBadge('Book');
+  }
+
+  useEffect(()=>{
+    requestData();
+  },[]);
 
   return (
     <React.Fragment>
-      <Header />
-
-      <div className="flex h-auto min-h-full w-full overflow-y-hidden">
-        <Nav />
-        <main className="w-full p-4 sm:pl-24">
+      <Header>
+        <div>
+          {titleName} <Badge size="xs">{badge}</Badge>
+        </div>
+      </Header>
+      <main className="ml-auto mr-auto mt-10 w-7/12">
+        <div>{chapters}</div>
+        <div className="w-8/12 pt-5">
           <Editor data={data} onChange={setData} editorblock="editorjs-container" />
-        </main>
-      </div>
+        </div>
+      </main>
     </React.Fragment>
   );
 }

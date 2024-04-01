@@ -22,11 +22,11 @@ const BadgeVariants = cva('w-fit px-2 bg-surface-1', {
   },
 });
 
-interface BadgeProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof BadgeVariants> {}
+interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, VariantProps<typeof BadgeVariants> {}
 
-const Badge: FC<BadgeProps> = forwardRef<HTMLDivElement, BadgeProps>(
+const Badge: FC<BadgeProps> = forwardRef<HTMLSpanElement, BadgeProps>(
   ({ className, size, type, children, ...props }, ref) => {
-    return <div ref={ref} {...props} className={twMerge(BadgeVariants({ size, type}), className)}>{children}</div>;
+    return <span ref={ref} {...props} className={twMerge(BadgeVariants({ size, type}), className)}>{children}</span>;
   },
 );
 

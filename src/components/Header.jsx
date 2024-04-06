@@ -17,7 +17,8 @@ export default function Header({ children }) {
 
   return (
     <header className="min flex h-14 w-full items-center justify-between bg-secondary-1 px-4 py-4 md:h-[4.25rem] md:px-20">
-      <Logo withText class="h-full cursor-pointer" />
+      {window.innerWidth>767 && (<Logo withText className="h-full cursor-pointer" />)}
+      {window.innerWidth<768 && (<Logo className="h-full cursor-pointer" />)}
       {children}
       <div>
         <img

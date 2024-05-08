@@ -38,7 +38,7 @@ export default function Input({ type = 'text', label = '', validator, disabled, 
       }
     } else {
       if (valid === false) {
-        setIconPath('./icons/Union.svg');
+        setIconPath('./icons/Warning.svg');
       } else {
         setIconPath('');
       }

@@ -1,0 +1,26 @@
+h1.ce-header {
+  font-size: 3rem;
+  font-family: 'Roslindale Cyrillic, sans serif';
+  font-weight: 600;
+}
+h2.ce-header {
+  font-size: 2rem;
+  font-family: 'Roboto Flex, sans-serif';
+  font-weight: 600;
+}
+h3.ce-header {
+  font-size: 1.5rem;
+  font-family: 'Roslindale Cyrillic, sans serif';
+  font-weight: 600;
+}
+
+.ce-block__content,
+.ce-toolbar__content {
+  max-width: unset;
+}
+
+@media (min-width: 651px) {
+  .codex-editor--narrow .ce-toolbar__actions {
+    right: 100%;
+  }
+}

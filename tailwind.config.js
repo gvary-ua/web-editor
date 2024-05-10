@@ -10,6 +10,9 @@ module.exports = {
       borderRadius: {
         10: '2.5rem',
       },
+      fontSize: {
+        initial: 'initial',
+      },
     },
     colors: {
       logo: '#332827',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import NavChapter from './NavChapter';
-import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
+import { BsChevronDoubleLeft, BsChevronDoubleRight } from 'react-icons/bs';
 
 function Nav() {
   const [showNav, setShowNav] = useState(true);
@@ -11,16 +11,17 @@ function Nav() {
   };
 
   return (
-    <div className="h-full relative">
-      <div onClick={toggleNav} className='absolute top-4 -right-6 p-1 border-2 border-l-0 border-black cursor-pointer z-50 block'>
-        {showNav ? (
-          <BsChevronDoubleLeft size={"1rem"} />
-        ) : (
-          <BsChevronDoubleRight size={"1rem"} />
-        )}
+    <div className="relative min-h-full">
+      <div
+        onClick={toggleNav}
+        className="border-black absolute -right-6 top-4 z-50 block cursor-pointer border-2 border-l-0 p-1"
+      >
+        {showNav ? <BsChevronDoubleLeft size={'1rem'} /> : <BsChevronDoubleRight size={'1rem'} />}
       </div>
-      <nav className={`flex-shrink-0 h-full w-60 py-2 px-6 border-r-2 border-r-black ${showNav ? '' : 'hidden'}`}>
-        <div className='flex justify-between items-center content-center pb-4'>
+      <nav
+        className={`border-r-black h-full w-60 flex-shrink-0 border-r-2 px-6 py-2 ${showNav ? '' : 'hidden'}`}
+      >
+        <div className="flex content-center items-center justify-between pb-4">
           <h1 className="text-xl">Chapters</h1>
         </div>
         <NavChapter />
@@ -29,6 +30,6 @@ function Nav() {
       </nav>
     </div>
   );
-};
+}
 
 export default Nav;

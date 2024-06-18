@@ -4,6 +4,8 @@ import Nav from './components/Nav';
 import Editor from './components/Editor';
 import { getCurrentUser } from './ApiClient';
 import { Button } from './components/Button';
+import { P } from './components/P';
+import PopUp from './components/PopUp';
 
 const INITIAL_DATA = {
   time: new Date().getTime(),
@@ -21,6 +23,7 @@ const INITIAL_DATA = {
 function App() {
   const [data, setData] = React.useState(INITIAL_DATA);
   const [user, setUser] = React.useState({ login: '' });
+  const [pleaseLogin, setPleaseLogin] = React.useState(false);
 
   React.useEffect(() => {
     getCurrentUser()
@@ -31,13 +34,20 @@ function App() {
       .catch((err) => {
         // TODO: Show popup with redirect to login page. And when logged in it should redirect back to editor
         // TODO: ignore 429 too many requests
+        setPleaseLogin(true);
       });
   }, []);
 
   return (
     <React.Fragment>
       <Header user={user} />
-
+      <PopUp label={'Please login!'} show={pleaseLogin} setShow={setPleaseLogin}>
+        {/* TODO: Put it in config */}
+        {/* TODO: After I press login redirect me back to SPA */}
+        <Button className="mx-auto mt-4" href="http://localhost:8000/login">
+          Login
+        </Button>
+      </PopUp>
       <div className="flex h-auto min-h-full w-full overflow-y-hidden">
         <Nav />
         <main className="w-full p-4 sm:pl-24">

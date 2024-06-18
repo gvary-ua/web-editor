@@ -25,8 +25,9 @@ const buttonVariants = cva(
 );
 
 function Button({ className, icon = false, iconPos, size, variant, ...props }) {
+  const Tag = props.href ? 'a' : 'button';
   return (
-    <button
+    <Tag
       {...props}
       className={twMerge(
         buttonVariants({ variant, size }),
@@ -36,7 +37,7 @@ function Button({ className, icon = false, iconPos, size, variant, ...props }) {
     >
       {icon ? <img src={icon} alt="icon" /> : null}
       {props.children}
-    </button>
+    </Tag>
   );
 }
 

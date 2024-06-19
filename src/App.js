@@ -24,6 +24,7 @@ function App() {
   const [data, setData] = React.useState(INITIAL_DATA);
   const [user, setUser] = React.useState({ login: '' });
   const [pleaseLogin, setPleaseLogin] = React.useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
 
   React.useEffect(() => {
     getCurrentUser()
@@ -38,23 +39,29 @@ function App() {
       });
   }, []);
 
+  const chapters = (
+    <P size="lg" weight="med">
+      Розділи:
+    </P>
+  );
+
   return (
     <React.Fragment>
-      <Header user={user} />
+      <Header user={user} onBurgerClick={() => setMobileNavOpen(!mobileNavOpen)} />
       <PopUp label={'Please login!'} show={pleaseLogin} setShow={setPleaseLogin}>
         {/* TODO: Put it in config */}
         {/* TODO: After I press login redirect me back to SPA */}
+        <div className="min-w-60"></div>
         <Button className="mx-auto mt-4" href="http://localhost:8000/login">
           Login
         </Button>
       </PopUp>
-      <div className="flex h-auto min-h-full w-full overflow-y-hidden px-20 pt-10">
-        <SideMenu>
-          <P size="lg" weight="med">
-            Розділи:
-          </P>
-        </SideMenu>
-        <main className="w-full p-4 sm:pl-24">
+      <PopUp show={mobileNavOpen} setShow={setMobileNavOpen}>
+        {chapters}
+      </PopUp>
+      <div className="flex h-auto w-full overflow-y-hidden px-20 pt-10">
+        <SideMenu className="hidden md:block">{chapters}</SideMenu>
+        <main className="w-full pl-9">
           <Editor data={data} onChange={setData} editorblock="editorjs-container" />
         </main>
       </div>

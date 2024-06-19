@@ -5,6 +5,7 @@ import { getCurrentUser } from './ApiClient';
 import { Button } from './components/Button';
 import { P } from './components/P';
 import PopUp from './components/PopUp';
+import SideMenu from './components/SideMenu';
 
 const INITIAL_DATA = {
   time: new Date().getTime(),
@@ -47,7 +48,12 @@ function App() {
           Login
         </Button>
       </PopUp>
-      <div className="flex h-auto min-h-full w-full overflow-y-hidden">
+      <div className="flex h-auto min-h-full w-full overflow-y-hidden px-20 pt-10">
+        <SideMenu>
+          <P size="lg" weight="med">
+            Розділи:
+          </P>
+        </SideMenu>
         <main className="w-full p-4 sm:pl-24">
           <Editor data={data} onChange={setData} editorblock="editorjs-container" />
         </main>

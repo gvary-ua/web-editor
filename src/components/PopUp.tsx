@@ -11,23 +11,23 @@ type IPopUp = React.FC<{
 const PopUp: IPopUp = ({ label, show, setShow, children }) => {
   return (
     show && (
-      <div
-        className="absolute left-0 top-0 flex h-screen w-full items-center justify-center"
-        style={{ backgroundColor: 'rgba(35, 31, 32, 0.25)' }}
-      >
-        <div className="sm:items-left relative z-50 h-full w-full  bg-background p-8 sm:h-min sm:w-fit sm:items-start sm:rounded-lg">
-          <P size="2xl" weight="med" className="text-center sm:text-left">
-            {label}
-          </P>
-          <img
-            src="./icons/Close.svg"
-            alt="Close icon"
-            className="absolute right-4 top-4 w-4 cursor-pointer"
-            onClick={() => setShow(false)}
-          />
+      <React.Fragment>
+        <div className="absolute left-0 top-0 z-40 hidden min-h-full min-w-full bg-[rgba(35,31,32,0.25)] md:block"></div>
+        <div className="absolute left-0 top-0 z-50 h-full w-full bg-background px-5 md:left-1/2 md:top-1/2 md:h-min md:w-fit md:-translate-x-1/2 md:-translate-y-3/4 md:rounded-lg md:px-8">
+          <div className="flex w-full items-center justify-between py-5">
+            <P size="2xl" weight="med" className="text-center sm:text-left">
+              {label}
+            </P>
+            <img
+              src="./icons/Close.svg"
+              alt="Close icon"
+              className="w-4 cursor-pointer"
+              onClick={() => setShow(false)}
+            />
+          </div>
           {children}
         </div>
-      </div>
+      </React.Fragment>
     )
   );
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './components/Header';
-import Nav from './components/Nav';
 import Editor from './components/Editor';
 import { getCurrentUser } from './ApiClient';
 import { Button } from './components/Button';
@@ -49,7 +48,6 @@ function App() {
         </Button>
       </PopUp>
       <div className="flex h-auto min-h-full w-full overflow-y-hidden">
-        <Nav />
         <main className="w-full p-4 sm:pl-24">
           <Editor data={data} onChange={setData} editorblock="editorjs-container" />
         </main>

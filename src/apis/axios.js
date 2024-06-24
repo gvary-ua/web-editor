@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
-const axiosInstance = axios.create({
+const api = axios.create({
   baseURL: 'http://localhost:8000/api',
   withCredentials: true,
   xsrfCookieName: 'XSRF-TOKEN',
@@ -19,11 +19,9 @@ const onRequest = (config) => {
 };
 
 const setCSRFToken = () => {
-  return axiosInstance.get('/sanctum/csrf-cookie');
+  return api.get('/sanctum/csrf-cookie');
 };
 
-axiosInstance.interceptors.request.use(onRequest, null);
+api.interceptors.request.use(onRequest, null);
 
-export async function getCurrentUser() {
-  return axiosInstance.get('/user');
-}
+export default api;

@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from './components/Header';
 import Editor from './components/Editor';
-import { getCurrentUser } from './ApiClient';
 import { Button } from './components/Button';
 import { P } from './components/P';
 import PopUp from './components/PopUp';
 import SideMenu from './components/SideMenu';
+import useCurrentUser from './apis/useUser';
 
 const INITIAL_DATA = {
   time: new Date().getTime(),
@@ -22,22 +22,9 @@ const INITIAL_DATA = {
 
 function App() {
   const [data, setData] = React.useState(INITIAL_DATA);
-  const [user, setUser] = React.useState({ login: '' });
-  const [pleaseLogin, setPleaseLogin] = React.useState(false);
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    getCurrentUser()
-      .then((result) => {
-        setUser(result.data);
-        console.log(result.data);
-      })
-      .catch((err) => {
-        // TODO: Show popup with redirect to login page. And when logged in it should redirect back to editor
-        // TODO: ignore 429 too many requests
-        setPleaseLogin(true);
-      });
-  }, []);
+  const { data: user, isError, isLoading } = useCurrentUser();
 
   const chapters = (
     <P size="lg" weight="med">
@@ -45,10 +32,13 @@ function App() {
     </P>
   );
 
-  return (
-    <React.Fragment>
-      <Header user={user} onBurgerClick={() => setMobileNavOpen(!mobileNavOpen)} />
-      <PopUp label={'Please login!'} show={pleaseLogin} setShow={setPleaseLogin}>
+  if (isLoading) {
+    return 'Loading...';
+  }
+
+  if (isError) {
+    return (
+      <PopUp label={'Please login!'} show={isError}>
         {/* TODO: Put it in config */}
         {/* TODO: After I press login redirect me back to SPA */}
         <div className="min-w-60"></div>
@@ -56,6 +46,13 @@ function App() {
           Login
         </Button>
       </PopUp>
+    );
+  }
+
+  return (
+    <React.Fragment>
+      <Header user={user} onBurgerClick={() => setMobileNavOpen(!mobileNavOpen)} />
+
       <PopUp show={mobileNavOpen} setShow={setMobileNavOpen}>
         {chapters}
       </PopUp>

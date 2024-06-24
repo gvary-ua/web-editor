@@ -2,10 +2,10 @@ import React from 'react';
 import Header from './components/Header';
 import Editor from './components/Editor';
 import { Button } from './components/Button';
-import { P } from './components/P';
 import PopUp from './components/PopUp';
 import SideMenu from './components/SideMenu';
 import useCurrentUser from './apis/useUser';
+import Chapters from './components/Chapters';
 
 const INITIAL_DATA = {
   time: new Date().getTime(),
@@ -21,16 +21,15 @@ const INITIAL_DATA = {
 };
 
 function App() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const coverId = urlParams.get('coverId');
+
   const [data, setData] = React.useState(INITIAL_DATA);
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
 
   const { data: user, isError, isLoading } = useCurrentUser();
 
-  const chapters = (
-    <P size="lg" weight="med">
-      Розділи:
-    </P>
-  );
+  const chapters = <Chapters coverId={coverId} />;
 
   if (isLoading) {
     return 'Loading...';

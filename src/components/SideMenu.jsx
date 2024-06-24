@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 export default function SideMenu({ children, className, ...props }) {
   const [open, setOpen] = useState(false);
+
   return (
     <nav {...props} className={twMerge('min-w-48', className)}>
       {!open && (
@@ -29,7 +30,7 @@ export default function SideMenu({ children, className, ...props }) {
               className="ml-auto w-5 cursor-pointer"
             />
           </div>
-          <div className="pt-2">{children}</div>
+          <div className="px-[6px] pt-2">{children}</div>
         </React.Fragment>
       )}
     </nav>

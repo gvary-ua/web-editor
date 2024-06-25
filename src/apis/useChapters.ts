@@ -1,21 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { Chapter, CreateChapter } from '../types/chapters';
+import { Response } from '../types/api';
 import api from './axios';
-
-export type Response<T> = {
-  data: T;
-};
-
-export type Chapter = {
-  id: number;
-  title: string;
-  public: boolean;
-  blockIds: string[];
-};
-
-export type CreateChapter = {
-  coverId: number;
-  title: string;
-};
 
 export function useChaptersByCoverId(coverId: number) {
   return useQuery({

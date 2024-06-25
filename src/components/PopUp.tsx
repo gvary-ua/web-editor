@@ -4,7 +4,7 @@ import { P } from './P';
 type IPopUp = React.FC<{
   label: string;
   show: boolean;
-  setShow: (boolean) => {};
+  setShow: (b: boolean) => void;
   children: ReactNode[];
 }>;
 

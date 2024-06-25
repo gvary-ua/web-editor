@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Editor from './components/Editor';
 import { Button } from './components/Button';
@@ -22,14 +22,17 @@ const INITIAL_DATA = {
 
 function App() {
   const urlParams = new URLSearchParams(window.location.search);
-  const coverId = urlParams.get('coverId');
+  const coverId = parseInt(urlParams.get('coverId'));
 
   const [data, setData] = React.useState(INITIAL_DATA);
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
 
   const { data: user, isError, isLoading } = useCurrentUser();
+  const [activeChapter, setActiveChapter] = useState(undefined);
 
-  const chapters = <Chapters coverId={coverId} />;
+  const chapters = (
+    <Chapters coverId={coverId} activeChapter={activeChapter} setActiveChapter={setActiveChapter} />
+  );
 
   if (isLoading) {
     return 'Loading...';

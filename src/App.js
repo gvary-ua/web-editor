@@ -28,11 +28,8 @@ function App() {
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
 
   const { data: user, isError, isLoading } = useCurrentUser();
-  const [activeChapter, setActiveChapter] = useState(undefined);
 
-  const chapters = (
-    <Chapters coverId={coverId} activeChapter={activeChapter} setActiveChapter={setActiveChapter} />
-  );
+  const chapters = <Chapters coverId={coverId} />;
 
   if (isLoading) {
     return 'Loading...';
@@ -58,9 +55,9 @@ function App() {
       <PopUp show={mobileNavOpen} setShow={setMobileNavOpen}>
         {chapters}
       </PopUp>
-      <div className="flex h-auto w-full overflow-y-hidden px-20 pt-10">
-        <SideMenu className="hidden md:block">{chapters}</SideMenu>
-        <main className="w-full pl-9">
+      <div className="flex h-auto max-h-[calc(100vh-3.5rem)] min-h-[calc(100vh-3.5rem)] w-full md:max-h-[calc(100vh-4.25rem)] md:min-h-[calc(100vh-4.25rem)] md:pl-20 ">
+        <SideMenu className="hidden overflow-y-auto  pt-10 md:block">{chapters}</SideMenu>
+        <main className="w-full overflow-y-auto px-3 py-3 md:pl-9 md:pt-10">
           <Editor data={data} onChange={setData} editorblock="editorjs-container" />
         </main>
       </div>

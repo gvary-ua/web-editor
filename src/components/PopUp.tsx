@@ -19,7 +19,7 @@ const PopUp: IPopUp = ({ label, show, setShow, children }) => {
               {label}
             </P>
             <img
-              src="./icons/Close.svg"
+              src="./icons/close.svg"
               alt="Close icon"
               className="w-4 cursor-pointer"
               onClick={() => setShow(false)}

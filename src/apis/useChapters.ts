@@ -5,7 +5,7 @@ import api from './axios';
 
 export function useChaptersByCoverId(coverId: number) {
   return useQuery({
-    queryKey: ['chapters-by-cover-id', coverId],
+    queryKey: ['chapters-by-cover-id'],
     queryFn: async () => {
       const response = await api.get<Response<Chapter[]>>(`/api/v1/chapters?coverId=${coverId}`);
       return response.data.data;
@@ -23,7 +23,7 @@ export function useChapterById(chapterId: number) {
   });
 }
 
-export function useChapterCreate(coverId: number) {
+export function useChapterCreate() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (chapter: CreateChapter) => {
@@ -31,7 +31,7 @@ export function useChapterCreate(coverId: number) {
       return response.data.data;
     },
     onSuccess: (chapter) => {
-      queryClient.setQueryData<Chapter[]>(['chapters-by-cover-id', coverId], (oldChapters) => {
+      queryClient.setQueryData<Chapter[]>(['chapters-by-cover-id'], (oldChapters) => {
         return [...oldChapters, chapter];
       });
     },
@@ -57,10 +57,18 @@ export function useChapterPartialUpdate() {
 }
 
 export function useChapterDelete() {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (chapterId: number) => {
-      const response = await api.delete(`/api/v1/chapters/${chapterId}`);
+      const response = await api.delete<void>(`/api/v1/chapters/${chapterId}`);
       return response.data;
+    },
+    onSuccess: (response, chapterId) => {
+      queryClient.setQueryData<Chapter[]>(['chapters-by-cover-id'], (oldChapters) => {
+        return oldChapters.filter((chapter) => {
+          return chapter.id !== chapterId;
+        });
+      });
     },
   });
 }

@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { P } from './P';
 import { useChapterCreate, useChaptersByCoverId } from '../apis/useChapters';
 import { Chapter } from '../types/chapters';
+import ChapterRow from './ChapterRow';
+import { GlobalContext } from '../GlobalContext';
 
-export default function Chapters({
-  coverId,
-  activeChapter,
-  setActiveChapter,
-}: {
-  coverId: number;
-  activeChapter: Chapter | undefined;
-  setActiveChapter: React.Dispatch<React.SetStateAction<Chapter>>;
-}) {
-  const { data: chapters } = useChaptersByCoverId(coverId);
-  const { mutate: createChapter } = useChapterCreate(coverId);
+export default function Chapters({ coverId }: { coverId: number }) {
+  const { data: chapters, isSuccess } = useChaptersByCoverId(coverId);
+  const { mutate: createChapter } = useChapterCreate();
+  const { activeChapter } = useContext(GlobalContext);
+
+  useEffect(() => {
+    if (
+      isSuccess &&
+      typeof activeChapter.get === 'undefined' &&
+      typeof chapters !== 'undefined' &&
+      chapters.length > 0
+    ) {
+      activeChapter.set(chapters[0]);
+    }
+  }, [isSuccess]);
+
   return (
     <>
       <div className="flex w-full items-center justify-between py-5">
@@ -30,18 +37,7 @@ export default function Chapters({
         />
       </div>
       {chapters?.map((chapter) => {
-        return (
-          <P
-            size="base"
-            className={
-              'mt-4 cursor-pointer ' + (chapter.id === activeChapter?.id ? '' : 'text-secondary-2')
-            }
-            key={chapter.id}
-            onClick={() => setActiveChapter(chapter)}
-          >
-            {chapter.title}
-          </P>
-        );
+        return <ChapterRow key={chapter.id} chapter={chapter} chapters={chapters}></ChapterRow>;
       })}
     </>
   );

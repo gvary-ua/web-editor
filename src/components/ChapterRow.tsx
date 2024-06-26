@@ -5,13 +5,7 @@ import DropDownMenu from './DropDownMenu';
 import { useChapterDelete } from '../apis/useChapters';
 import { GlobalContext } from '../GlobalContext';
 
-export default function ChapterRow({
-  chapter,
-  chapters,
-}: {
-  chapter: Chapter;
-  chapters: Chapter[];
-}) {
+export default function ChapterRow({ chapter }: { chapter: Chapter }) {
   const [showDropDown, setShowDropDown] = useState(false);
   const { mutate: deleteChapter } = useChapterDelete();
   const { activeChapter } = useContext(GlobalContext);
@@ -44,21 +38,10 @@ export default function ChapterRow({
               <P
                 className="mt-2 cursor-pointer text-error"
                 onClick={() => {
-                  deleteChapter(chapter.id, {
-                    onSuccess: () => {
-                      console.log('my on success');
-                      if (
-                        chapter.id === activeChapter.get?.id &&
-                        typeof activeChapter.get === 'undefined' &&
-                        typeof chapters !== 'undefined' &&
-                        chapters.length > 0
-                      ) {
-                        activeChapter.set(chapters[0]);
-                      } else {
-                        activeChapter.set(undefined);
-                      }
-                    },
-                  });
+                  deleteChapter(chapter.id);
+                  if (activeChapter.get?.id === chapter.id) {
+                    activeChapter.set(undefined);
+                  }
                 }}
               >
                 Видалити

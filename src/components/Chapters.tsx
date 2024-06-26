@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { P } from './P';
 import { useChapterCreate, useChaptersByCoverId } from '../apis/useChapters';
-import { Chapter } from '../types/chapters';
 import ChapterRow from './ChapterRow';
 import { GlobalContext } from '../GlobalContext';
 
@@ -10,6 +9,9 @@ export default function Chapters({ coverId }: { coverId: number }) {
   const { mutate: createChapter } = useChapterCreate();
   const { activeChapter } = useContext(GlobalContext);
 
+  // This useEffect automatically assigns first chapter active
+  // When we delete the active chapter we set it to undefined
+  // Delete action will trigger change in `chapters` which trigger this useEffect
   useEffect(() => {
     if (
       isSuccess &&
@@ -19,7 +21,7 @@ export default function Chapters({ coverId }: { coverId: number }) {
     ) {
       activeChapter.set(chapters[0]);
     }
-  }, [isSuccess]);
+  }, [isSuccess, chapters]);
 
   return (
     <>
@@ -37,7 +39,7 @@ export default function Chapters({ coverId }: { coverId: number }) {
         />
       </div>
       {chapters?.map((chapter) => {
-        return <ChapterRow key={chapter.id} chapter={chapter} chapters={chapters}></ChapterRow>;
+        return <ChapterRow key={chapter.id} chapter={chapter}></ChapterRow>;
       })}
     </>
   );

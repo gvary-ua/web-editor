@@ -4,7 +4,7 @@ import Undo from 'editorjs-undo';
 import DragDrop from 'editorjs-drag-drop';
 
 // Local config
-import { EDITOR_JS_TOOLS } from '../../editor.config';
+import { EDITOR_JS_TOOLS } from './editor.config';
 
 // Types
 import { OutputData } from '@editorjs/editorjs/types/data-formats';

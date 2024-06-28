@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import Logo from './Logo';
+import Logo from 'components/Logo';
 
 export default function Header({ user, children, onBurgerClick }) {
   const [profileImg, setProfileImg] = useState('/icons/user.svg');

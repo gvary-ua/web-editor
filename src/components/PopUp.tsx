@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { P } from './P';
+import { P } from 'components/P';
 
 type IPopUp = React.FC<{
   label: string;

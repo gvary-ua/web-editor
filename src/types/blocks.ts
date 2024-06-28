@@ -1,7 +1,12 @@
 export type Block = {
-  blockNanoid10: string;
-  blockTypeId: number;
+  id: string;
+  typeId: number;
   data: object;
   dataVersion: string;
   wordCount: number;
+};
+
+export type CreateBlocks = {
+  chapterId: number;
+  blocks: Block[];
 };

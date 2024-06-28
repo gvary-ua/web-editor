@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
-import { GlobalContext } from './GlobalContext';
-import { Chapter } from './types/chapters';
+import React, { useState } from 'react';
+import { GlobalContext } from 'context/GlobalContext';
+import { Chapter } from 'types/chapters';
 
 export const GlobalContextProvider: React.FC = ({ children }: { children: any }) => {
   const [activeChapter, setActiveChapter] = useState<Chapter | undefined>(undefined);

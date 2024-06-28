@@ -23,6 +23,7 @@ const Editor: React.FC<IEditor> = ({ data, onChange, editorblock }) => {
       const editor = new EditorJS({
         holder: editorblock,
         tools: EDITOR_JS_TOOLS,
+        tunes: ['versionTune'],
         data: data,
         minHeight: 20,
         onReady() {

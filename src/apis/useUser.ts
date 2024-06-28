@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import api from './axios';
+import api from 'apis/axios';
 
 export type User = {
   id: number;

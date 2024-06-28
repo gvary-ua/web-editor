@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Chapter, CreateChapter } from '../types/chapters';
-import { Response } from '../types/api';
-import api from './axios';
+import { Chapter, CreateChapter } from 'types/chapters';
+import { Response } from 'types/api';
+import api from 'apis/axios';
 
 export function useChaptersByCoverId(coverId: number) {
   return useQuery({
@@ -26,6 +26,7 @@ export function useChapterById(chapterId: number) {
 export function useChapterCreate() {
   const queryClient = useQueryClient();
   return useMutation({
+    mutationKey: ['chapter-create'],
     mutationFn: async (chapter: CreateChapter) => {
       const response = await api.post<Response<Chapter>>('/api/v1/chapters', chapter);
       return response.data.data;
@@ -40,6 +41,7 @@ export function useChapterCreate() {
 
 export function useChapterUpdate() {
   return useMutation({
+    mutationKey: ['chapter-update'],
     mutationFn: async (chapter: Chapter) => {
       const response = await api.put(`/api/v1/chapters/${chapter.id}`, chapter);
       return response.data;
@@ -49,6 +51,7 @@ export function useChapterUpdate() {
 
 export function useChapterPartialUpdate() {
   return useMutation({
+    mutationKey: ['chapter-update-partial'],
     mutationFn: async (chapter: Chapter) => {
       const response = await api.patch(`/api/v1/chapters/${chapter.id}`, chapter);
       return response.data;
@@ -59,6 +62,7 @@ export function useChapterPartialUpdate() {
 export function useChapterDelete() {
   const queryClient = useQueryClient();
   return useMutation({
+    mutationKey: ['chapter-delete'],
     mutationFn: async (chapterId: number) => {
       const response = await api.delete<void>(`/api/v1/chapters/${chapterId}`);
       return response.data;

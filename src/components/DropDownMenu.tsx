@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import useClickOutside from '../useClickOutside';
+import useClickOutside from 'functions/useClickOutside';
 
 export default function DropDownMenu({ children, show, setShow }) {
   const menuRef = useRef(null);

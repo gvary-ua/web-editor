@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { P } from './P';
-import { Chapter } from '../types/chapters';
-import DropDownMenu from './DropDownMenu';
-import { useChapterDelete } from '../apis/useChapters';
-import { GlobalContext } from '../GlobalContext';
+import { P } from 'components/P';
+import { Chapter } from 'types/chapters';
+import DropDownMenu from 'components/DropDownMenu';
+import { useChapterDelete } from 'apis/useChapters';
+import { GlobalContext } from 'context/GlobalContext';
 
 export default function ChapterRow({ chapter }: { chapter: Chapter }) {
   const [showDropDown, setShowDropDown] = useState(false);

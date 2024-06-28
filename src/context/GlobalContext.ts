@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Chapter } from './types/chapters';
+import { Chapter } from 'types/chapters';
 
 export type GlobalContextType = {
   activeChapter: {

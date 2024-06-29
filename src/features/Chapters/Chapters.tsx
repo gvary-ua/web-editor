@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { P } from 'components/P';
-import { useChapterCreate } from 'apis/useChapters';
+import { useChapterCreate, useChaptersByCoverId } from 'apis/useChapters';
 import ChapterRow from './ChapterRow';
-import { Chapter } from 'types/chapters';
+import { GlobalContext } from 'context/GlobalContext';
 
-export default function Chapters({ coverId, chapters }: { coverId: number; chapters: Chapter[] }) {
+export default function Chapters() {
+  const { activeChapter, coverId } = useContext(GlobalContext);
+  const { data: chapters, isSuccess: isChaptersSuccess } = useChaptersByCoverId(coverId);
   const { mutate: createChapter } = useChapterCreate();
+
+  // This useEffect automatically assigns first chapter active
+  // When we delete the active chapter we set it to undefined
+  // Delete action will trigger change in `chapters` which trigger this useEffect
+  useEffect(() => {
+    if (
+      isChaptersSuccess &&
+      typeof activeChapter.get === 'undefined' &&
+      typeof chapters !== 'undefined' &&
+      chapters.length > 0
+    ) {
+      activeChapter.set(chapters[0]);
+    }
+    // I didn't put activeChapter here as a dependency, because on delete I set it to undefined, which triggers reload.
+  }, [isChaptersSuccess, chapters]);
 
   return (
     <>

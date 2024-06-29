@@ -1,7 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Chapter, CreateChapter } from 'types/chapters';
-import { Response } from 'types/api';
+import { Chapter, CreateChapter } from 'apis/types/chapters';
+import { Response } from 'apis/types/api';
 import api from 'apis/axios';
+import { useContext } from 'react';
+import { GlobalContext } from 'context/GlobalContext';
 
 export function useChaptersByCoverId(coverId: number) {
   return useQuery({
@@ -61,6 +63,7 @@ export function useChapterPartialUpdate() {
 
 export function useChapterDelete() {
   const queryClient = useQueryClient();
+  const { activeChapter } = useContext(GlobalContext);
   return useMutation({
     mutationKey: ['chapter-delete'],
     mutationFn: async (chapterId: number) => {
@@ -69,9 +72,14 @@ export function useChapterDelete() {
     },
     onSuccess: (response, chapterId) => {
       queryClient.setQueryData<Chapter[]>(['chapters-by-cover-id'], (oldChapters) => {
-        return oldChapters.filter((chapter) => {
+        const newChapters = oldChapters.filter((chapter) => {
           return chapter.id !== chapterId;
         });
+
+        if (activeChapter.get?.id === chapterId) {
+          activeChapter.set(undefined);
+        }
+        return newChapters;
       });
     },
   });

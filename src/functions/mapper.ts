@@ -1,4 +1,7 @@
-export function editorBlockTypeToId(type) {
+import { OutputBlockData } from '@editorjs/editorjs';
+import { Block } from 'apis/types/blocks.js';
+
+export function editorBlockTypeToId(type: string): number {
   switch (type) {
     case 'header':
       return 1;
@@ -11,12 +14,12 @@ export function editorBlockTypeToId(type) {
     case 'delimiter':
       return 5;
     default:
-      throw new Error('This type is not supported!', type);
+      throw new Error(`This type '${type}' is not supported!`);
   }
 }
 
-export function dbBlockTypeIdToString(type) {
-  switch (type) {
+export function dbBlockTypeIdToString(id: number): string {
+  switch (id) {
     case 1:
       return 'header';
     case 2:
@@ -28,11 +31,11 @@ export function dbBlockTypeIdToString(type) {
     case 5:
       return 'delimiter';
     default:
-      throw new Error('This id is not supported!', type);
+      throw new Error(`This id '${id}' is not supported!`);
   }
 }
 
-export function editorBlockToDbBlock(editorBlock) {
+export function editorBlockToDbBlock(editorBlock: OutputBlockData): Block {
   return {
     id: editorBlock.id,
     typeId: editorBlockTypeToId(editorBlock.type),
@@ -42,10 +45,10 @@ export function editorBlockToDbBlock(editorBlock) {
   };
 }
 
-export function dbBlockToEditorBlock(dbBlock) {
+export function dbBlockToEditorBlock(dbBlock: Block) {
   return {
     id: dbBlock.id,
     data: dbBlock.data,
     type: dbBlockTypeIdToString(dbBlock.typeId),
-  };
+  } as OutputBlockData;
 }

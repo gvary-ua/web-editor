@@ -2,10 +2,10 @@ import React, { ReactNode } from 'react';
 import { P } from 'components/P';
 
 type IPopUp = React.FC<{
-  label: string;
+  label?: string;
   show: boolean;
-  setShow: (b: boolean) => void;
-  children: ReactNode[];
+  setShow?: (b: boolean) => void;
+  children: ReactNode;
 }>;
 
 const PopUp: IPopUp = ({ label, show, setShow, children }) => {

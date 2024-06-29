@@ -24,6 +24,6 @@
   },
   "include": [
     "src",
-    "src/types/svg.d.ts"
+    "src/apis/types/svg.d.ts"
   ]
 }

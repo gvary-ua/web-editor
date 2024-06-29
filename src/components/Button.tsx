@@ -1,4 +1,5 @@
 import { cva } from 'class-variance-authority';
+import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const buttonVariants = cva(
@@ -24,7 +25,22 @@ const buttonVariants = cva(
   },
 );
 
-function Button({ className, icon = false, iconPos, size, variant, ...props }) {
+function Button({
+  className = '',
+  icon = undefined,
+  iconPos = 'left',
+  size = 'sm',
+  variant = 'secondary-1',
+  ...props
+}: {
+  className?: string;
+  icon?: string;
+  iconPos?: 'left' | 'right';
+  size?: 'xs' | 'sm' | 'base' | '2xl';
+  variant?: 'primary' | 'secondary-1' | 'secondary-2';
+  href?: string;
+  children?: React.ReactNode;
+}) {
   const Tag = props.href ? 'a' : 'button';
   return (
     <Tag

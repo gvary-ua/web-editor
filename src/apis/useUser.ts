@@ -1,10 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import api from 'apis/axios';
-
-export type User = {
-  id: number;
-  login: string;
-};
+import { User } from './types/user';
 
 export default function useCurrentUser() {
   return useQuery<User, Error>({

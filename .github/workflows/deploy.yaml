@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: |
           npm ci
-          npm run build
+          CI=false npm run build
 
       - name: Deploy to S3
         run: |

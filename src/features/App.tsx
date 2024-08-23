@@ -19,10 +19,9 @@ export default function App() {
   if (isUserError) {
     return (
       <PopUp label={'Please login!'} show={isUserError}>
-        {/* TODO: Put it in config */}
         {/* TODO: After I press login redirect me back to SPA */}
         <div className="min-w-60"></div>
-        <Button className="mx-auto mt-4" href="http://localhost:8000/login">
+        <Button className="mx-auto mt-4" href={process.env.REACT_APP_API_BASE_URL + '/login'}>
           Login
         </Button>
       </PopUp>

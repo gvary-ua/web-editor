@@ -1,17 +1,23 @@
+/* TODO: change back to Roslindale Cyrillic (figure out why font isn't loading) */
+/* This is semantically h3 */
 h1.ce-header {
-  font-size: 3rem;
-  font-family: 'Roslindale Cyrillic, sans serif';
-  font-weight: 600;
+  font-size: 2.5rem;
+  font-family: Roboto Flex, sans-serif;
+  font-weight: 500;
 }
+
+/* This is semantically h4 */
 h2.ce-header {
   font-size: 2rem;
-  font-family: 'Roboto Flex, sans-serif';
-  font-weight: 600;
+  font-family: Roboto Flex, sans-serif;
+  font-weight: 400;
 }
+
+/* This is semantically h5 */
 h3.ce-header {
   font-size: 1.5rem;
-  font-family: 'Roslindale Cyrillic, sans serif';
-  font-weight: 600;
+  font-family: Roboto Flex, sans-serif;
+  font-weight: 400;
 }
 
 .ce-block__content,

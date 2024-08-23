@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       fontFamily: {
         robotoFlex: 'Roboto Flex, sans-serif',
-        roslindaleCyrillic: 'Roslindale Cyrillic, sans serif',
+        // TODO: change back to Roslindale Cyrillic (figure out why font isn't loading)
+        roslindaleCyrillic: 'Roboto Flex, sans serif',
       },
       borderRadius: {
         10: '2.5rem',

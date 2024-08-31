@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Chapter, CreateChapter } from 'apis/types/chapters';
+import { Chapter, ChapterPartialUpdate, CreateChapter } from 'apis/types/chapters';
 import { Response } from 'apis/types/api';
 import api from 'apis/axios';
 import { useContext } from 'react';
@@ -52,11 +52,24 @@ export function useChapterUpdate() {
 }
 
 export function useChapterPartialUpdate() {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationKey: ['chapter-update-partial'],
-    mutationFn: async (chapter: Chapter) => {
-      const response = await api.patch(`/api/v1/chapters/${chapter.id}`, chapter);
-      return response.data;
+    mutationFn: async (chapter: ChapterPartialUpdate) => {
+      const response = await api.patch<Response<Chapter>>(
+        `/api/v1/chapters/${chapter.id}`,
+        chapter,
+      );
+      return response.data.data;
+    },
+    onSuccess: (response, chapter: ChapterPartialUpdate) => {
+      queryClient.setQueryData<Chapter[]>(['chapters-by-cover-id'], (oldChapters) => {
+        var foundIndex = oldChapters.findIndex((c) => c.id === chapter.id);
+        if (foundIndex !== -1) {
+          oldChapters[foundIndex] = { ...oldChapters[foundIndex], ...chapter };
+        }
+        return oldChapters;
+      });
     },
   });
 }

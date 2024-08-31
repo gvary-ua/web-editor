@@ -28,7 +28,6 @@ interface HProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof HVa
 const H: FC<HProps> = forwardRef<HTMLDivElement, HProps>(
   ({ className, level = 'h5', weight, ...props }, ref) => {
     return React.createElement(`${level}`, {
-      ref: { ref },
       className: twMerge(HVariants({ level, weight }), className),
       ...props,
     });

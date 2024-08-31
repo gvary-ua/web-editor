@@ -12,12 +12,12 @@ const queryClient = new QueryClient();
 
 root.render(
   <React.StrictMode>
-    <GlobalContextProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <GlobalContextProvider>
         <App />
         <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </GlobalContextProvider>
+      </GlobalContextProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 );
 

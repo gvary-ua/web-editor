@@ -4,13 +4,13 @@ import React from 'react';
 import Chapters from './Chapters/Chapters';
 import PopUp from 'components/PopUp';
 import { Button } from 'components/Button';
-import AliveEditorJs from './Editor/AliveEditorJs';
+import PageContent from './PageContent/PageContent';
 
 export default function App() {
   const { data: user, isError: isUserError, isLoading: isUserLoading } = useCurrentUser();
 
   const nav = <Chapters />;
-  const content = <AliveEditorJs />;
+  const content = <PageContent />;
 
   if (isUserLoading) {
     return 'User is loading...';

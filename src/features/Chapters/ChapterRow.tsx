@@ -18,7 +18,7 @@ export default function ChapterRow({ chapter }: { chapter: Chapter }) {
         }
         onClick={() => activeChapter.set(chapter)}
       >
-        {chapter.title}
+        {chapter.id === activeChapter.get?.id ? activeChapter.get?.title : chapter.title}
       </P>
       <img
         src="./icons/vertical-three-dots.svg"

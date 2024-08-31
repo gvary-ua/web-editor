@@ -1,13 +1,21 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from 'context/GlobalContext';
-import { H } from 'components/H';
+import { useChapterPartialUpdate } from 'apis/useChapters';
 
 export default function ChapterHeader() {
   const { activeChapter } = useContext(GlobalContext);
+  const { mutate: updateTitle } = useChapterPartialUpdate();
 
   return (
-    <H className="pb-[3px] pt-[0.6em]" level="h4">
-      {activeChapter.get?.title}
-    </H>
+    <input
+      autoCorrect="on"
+      spellCheck="true"
+      type="text"
+      placeholder="Назва глави"
+      value={activeChapter.get?.title || ''}
+      className="mb-[3px] mt-[0.6em] w-full rounded-md py-2 font-robotoFlex text-[2rem] leading-[2rem] hover:bg-surface-2"
+      onChange={(e) => activeChapter?.set({ ...activeChapter.get, title: e.target.value })}
+      onBlur={(e) => updateTitle({ id: activeChapter.get?.id, title: e.target.value })}
+    ></input>
   );
 }

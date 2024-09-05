@@ -1,8 +1,7 @@
-/* TODO: change back to Roslindale Cyrillic (figure out why font isn't loading) */
 /* This is semantically h3 */
 h1.ce-header {
   font-size: 2.5rem;
-  font-family: Roboto Flex, sans-serif;
+  font-family: Roslindale-Cyrillic, sans-serif;
   font-weight: 500;
 }
 

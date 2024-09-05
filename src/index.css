@@ -12,3 +12,8 @@ body,
   height: 100%;
   overflow-y: hidden;
 }
+
+@font-face {
+  font-family: 'Roslindale-Cyrillic';
+  src: local('Roslindale-Cyrillic'), url(./fonts/RoslindaleCyrillicText-Regular.otf) format('opentype');
+}

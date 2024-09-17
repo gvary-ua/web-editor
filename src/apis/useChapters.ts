@@ -15,16 +15,6 @@ export function useChaptersByCoverId(coverId: number) {
   });
 }
 
-export function useChapterById(chapterId: number) {
-  return useQuery({
-    queryKey: ['chapter-by-id', chapterId],
-    queryFn: async () => {
-      const response = await api.get<Chapter>(`/api/v1/chapters/${chapterId}`);
-      return response.data;
-    },
-  });
-}
-
 export function useChapterCreate() {
   const queryClient = useQueryClient();
   return useMutation({
@@ -37,16 +27,6 @@ export function useChapterCreate() {
       queryClient.setQueryData<Chapter[]>(['chapters-by-cover-id'], (oldChapters) => {
         return [...oldChapters, chapter];
       });
-    },
-  });
-}
-
-export function useChapterUpdate() {
-  return useMutation({
-    mutationKey: ['chapter-update'],
-    mutationFn: async (chapter: Chapter) => {
-      const response = await api.put(`/api/v1/chapters/${chapter.id}`, chapter);
-      return response.data;
     },
   });
 }

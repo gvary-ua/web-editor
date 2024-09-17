@@ -39,6 +39,8 @@ function Button({
   size?: 'xs' | 'sm' | 'base' | '2xl';
   variant?: 'primary' | 'secondary-1' | 'secondary-2';
   href?: string;
+  target?: string;
+  rel?: string;
   children?: React.ReactNode;
 }) {
   const Tag = props.href ? 'a' : 'button';

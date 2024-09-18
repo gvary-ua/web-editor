@@ -1,8 +1,9 @@
+import { Chapter } from 'apis/types/chapters';
 import { useChapterDelete } from 'apis/useChapters';
 import { P } from 'components/P';
 import React from 'react';
 
-export default function ChapterRowDropDownMenuContent({ chapterId }: { chapterId: number }) {
+export default function ChapterRowDropDownMenuContent({ chapter }: { chapter: Chapter }) {
   const { mutate: deleteChapter } = useChapterDelete();
 
   return (
@@ -12,7 +13,9 @@ export default function ChapterRowDropDownMenuContent({ chapterId }: { chapterId
       <P
         className="mt-2 cursor-pointer text-error"
         onClick={() => {
-          deleteChapter(chapterId);
+          if (window.confirm(`Дійсно бажаєш видалити главу "${chapter.title}"?`)) {
+            deleteChapter(chapter.id);
+          }
         }}
       >
         Видалити

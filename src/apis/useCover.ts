@@ -3,13 +3,14 @@ import api from 'apis/axios';
 import { Cover, UpdateCoverTitle } from './types/covers';
 import { Response } from 'apis/types/api';
 
-export default function useCover(coverId: number) {
+export default function useCover(coverId: number, options?) {
   return useQuery<Cover, Error>({
     queryKey: ['cover', coverId],
     queryFn: async () => {
       const response = await api.get<Response<Cover>>(`/api/v1/covers/${coverId}`);
       return response.data.data;
     },
+    ...options,
   });
 }
 

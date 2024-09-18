@@ -30,7 +30,7 @@ export default function ChapterRow({ chapter }: { chapter: Chapter }) {
       />
       {showDropDown && (
         <DropDownMenu show={showDropDown} setShow={setShowDropDown}>
-          <ChapterRowDropDownMenuContent chapterId={chapter.id} />
+          <ChapterRowDropDownMenuContent chapter={chapter} />
         </DropDownMenu>
       )}
     </div>

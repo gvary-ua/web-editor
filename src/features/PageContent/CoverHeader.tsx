@@ -15,7 +15,7 @@ export default function CoverHeader() {
       type="text"
       placeholder="Назва книги"
       value={title}
-      className="mb-[3px] mt-[0.6em] w-full rounded-md font-roslindaleCyrillic text-[2.5rem] leading-[1.2] hover:bg-surface-2"
+      className="mb-[3px] w-full rounded-md font-roslindaleCyrillic text-[2.5rem] leading-[1.2] hover:bg-surface-2"
       onChange={(e) => setTitle(e.target.value)}
       onFocus={(e) => setTitleOnFocus(e.target.value)}
       onBlur={(e) => {

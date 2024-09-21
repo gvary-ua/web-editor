@@ -22,9 +22,11 @@ export default function PageLayout({
       <PopUp show={mobileNavOpen} setShow={setMobileNavOpen}>
         {nav}
       </PopUp>
-      <div className="flex h-auto max-h-[calc(100vh-3.5rem)] min-h-[calc(100vh-3.5rem)] w-full md:max-h-[calc(100vh-4.25rem)] md:min-h-[calc(100vh-4.25rem)] md:pl-20 ">
-        <SideMenu className="hidden overflow-y-auto pt-10 md:block">{nav}</SideMenu>
-        <main className="w-full overflow-y-auto px-3 py-3 md:px-20 md:pt-10">{content}</main>
+      <div className="flex h-auto max-h-[calc(100vh-3.5rem)] min-h-[calc(100vh-3.5rem)] w-full md:max-h-[calc(100vh-4.25rem)] md:min-h-[calc(100vh-4.25rem)] md:pl-8 lg:pl-20 ">
+        <SideMenu className="hidden flex-shrink-0 overflow-y-auto pt-10 md:block">{nav}</SideMenu>
+        <main className="relative w-full overflow-y-auto py-10">
+          <div className="mx-auto max-w-[90%] sm:max-w-[64vw]">{content}</div>
+        </main>
       </div>
     </React.Fragment>
   );

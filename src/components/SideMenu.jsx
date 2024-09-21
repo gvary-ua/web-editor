@@ -7,8 +7,13 @@ import { twMerge } from 'tailwind-merge';
 export default function SideMenu({ children, className, ...props }) {
   const [open, setOpen] = useState(true);
 
+  let width = 'w-48';
+  if (!open) {
+    width = 'w-8';
+  }
+
   return (
-    <nav {...props} className={twMerge('min-w-48', className)}>
+    <nav {...props} className={twMerge('transition-all duration-300 ', width, className)}>
       <img
         src="/icons/gear.svg"
         alt="Open navigation"

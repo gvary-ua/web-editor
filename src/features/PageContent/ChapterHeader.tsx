@@ -19,7 +19,7 @@ export default function ChapterHeader() {
       onFocus={(e) => setTitleOnFocus(e.target.value)}
       onBlur={(e) => {
         const s = e.target.value;
-        if (s && s !== '' && s !== activeChapter.get?.title) {
+        if (s && s !== '' && s !== titleOnFocus) {
           updateTitle({ id: activeChapter.get?.id, title: s });
         } else {
           activeChapter?.set({ ...activeChapter.get, title: titleOnFocus });

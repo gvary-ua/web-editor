@@ -20,7 +20,7 @@ export default function CoverHeader() {
       onFocus={(e) => setTitleOnFocus(e.target.value)}
       onBlur={(e) => {
         const s = e.target.value;
-        if (s && s !== '' && s !== title) {
+        if (s && s !== '' && s !== titleOnFocus) {
           updateCoverTitle({ coverId: cover.id, title: s });
         } else {
           setTitle(titleOnFocus);

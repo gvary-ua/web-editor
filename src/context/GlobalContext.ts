@@ -5,10 +5,9 @@ import { Cover } from 'apis/types/covers';
 export type GlobalContextType = {
   coverId: number;
   cover: Cover;
-  activeChapter: {
-    get: Chapter | undefined;
-    set: React.Dispatch<React.SetStateAction<Chapter | undefined>>;
-  };
+  chapters: Chapter[];
+  activeChapter: undefined | Chapter;
+  setActiveChapter: React.Dispatch<React.SetStateAction<undefined | Chapter>>;
 };
 
 export const GlobalContext = createContext<GlobalContextType | undefined>(undefined);

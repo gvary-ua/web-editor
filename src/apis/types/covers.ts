@@ -2,7 +2,7 @@ export type Cover = {
   id: number;
   title: string;
   public: boolean;
-  coverTypeId: number;
+  coverType: number;
 };
 
 export type UpdateCoverTitle = {

@@ -6,19 +6,17 @@ import { GlobalContext } from 'context/GlobalContext';
 import ChapterRowDropDownMenuContent from './ChapterRowDropDownMenuContent';
 
 export default function ChapterRow({ chapter }: { chapter: Chapter }) {
-  const { activeChapter } = useContext(GlobalContext);
+  const { activeChapter, setActiveChapter } = useContext(GlobalContext);
   const [showDropDown, setShowDropDown] = useState(false);
 
   return (
     <div className="relative mt-4 flex w-full items-center justify-between">
       <P
         size="base"
-        className={
-          'cursor-pointer ' + (chapter.id === activeChapter.get?.id ? '' : 'text-secondary-2')
-        }
-        onClick={() => activeChapter.set(chapter)}
+        className={'cursor-pointer ' + (chapter.id === activeChapter?.id ? '' : 'text-secondary-2')}
+        onClick={() => setActiveChapter(chapter)}
       >
-        {chapter.id === activeChapter.get?.id ? activeChapter.get?.title : chapter.title}
+        {chapter.id === activeChapter?.id ? activeChapter?.title : chapter.title}
       </P>
       <img
         src="./icons/vertical-three-dots.svg"

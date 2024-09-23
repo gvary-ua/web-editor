@@ -5,13 +5,14 @@ import api from 'apis/axios';
 import { useContext } from 'react';
 import { GlobalContext } from 'context/GlobalContext';
 
-export function useChaptersByCoverId(coverId: number) {
-  return useQuery({
+export function useChaptersByCoverId(coverId: number, options?) {
+  return useQuery<Chapter[]>({
     queryKey: ['chapters-by-cover-id'],
     queryFn: async () => {
       const response = await api.get<Response<Chapter[]>>(`/api/v1/chapters?coverId=${coverId}`);
       return response.data.data;
     },
+    ...options,
   });
 }
 
@@ -56,7 +57,7 @@ export function useChapterPartialUpdate() {
 
 export function useChapterDelete() {
   const queryClient = useQueryClient();
-  const { activeChapter } = useContext(GlobalContext);
+  const { activeChapter, setActiveChapter } = useContext(GlobalContext);
   return useMutation({
     mutationKey: ['chapter-delete'],
     mutationFn: async (chapterId: number) => {
@@ -68,9 +69,12 @@ export function useChapterDelete() {
         const newChapters = oldChapters.filter((chapter) => {
           return chapter.id !== chapterId;
         });
+        console.log(activeChapter, chapterId, oldChapters, newChapters);
 
-        if (activeChapter.get?.id === chapterId) {
-          activeChapter.set(undefined);
+        // A cover must have at least one chapter
+        console.log(activeChapter.id === chapterId);
+        if (activeChapter.id === chapterId) {
+          setActiveChapter(newChapters[0]);
         }
         return newChapters;
       });

@@ -13,7 +13,7 @@ export default function AliveEditorJs() {
     data: blocks,
     isError: isBlockError,
     isLoading: isBlockLoading,
-  } = useBlocksByChapterId(activeChapter.get?.id, { enabled: !!activeChapter.get });
+  } = useBlocksByChapterId(activeChapter?.id, { enabled: !!activeChapter });
 
   const { mutate: createBlocks } = useBlocksCreate();
 
@@ -24,17 +24,13 @@ export default function AliveEditorJs() {
       dbBlocks.push(editorBlockToDbBlock(eBlock));
     }
     createBlocks({
-      chapterId: activeChapter.get?.id,
+      chapterId: activeChapter?.id,
       blocks: dbBlocks,
     });
   };
 
   // Debounce to save data every N seconds
   const debouncedSaveData = debounce(saveData, 1_000);
-
-  if (!activeChapter.get) {
-    return <div>Loading chapters...</div>;
-  }
 
   if (isBlockLoading) {
     return <div>Loading blocks...</div>;
@@ -49,7 +45,7 @@ export default function AliveEditorJs() {
       data={blocks as OutputData}
       onChange={debouncedSaveData}
       onDestroy={saveData}
-      id={activeChapter.get?.id}
+      id={activeChapter?.id}
     />
   );
 }

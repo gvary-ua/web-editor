@@ -1,4 +1,9 @@
 export type User = {
   id: number;
-  login: string;
+  displayName: string;
+  imgUrl: string;
+};
+
+export type UserResponse = {
+  data: User;
 };

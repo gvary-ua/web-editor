@@ -5,7 +5,8 @@ export type Cover = {
   coverType: number;
 };
 
-export type UpdateCoverTitle = {
+export type UpdatePartiallyCover = {
   coverId: number;
-  title: string;
+  title?: string;
+  chapter_ids?: number[];
 };

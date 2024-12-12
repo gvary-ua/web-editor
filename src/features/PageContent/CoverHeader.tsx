@@ -3,7 +3,7 @@ import { GlobalContext } from 'context/GlobalContext';
 import { useCoverUpdate } from 'apis/useCover';
 
 export default function CoverHeader() {
-  const { cover } = useContext(GlobalContext);
+  const { cover, i18n } = useContext(GlobalContext);
   const [title, setTitle] = useState(cover.title);
   const [titleOnFocus, setTitleOnFocus] = useState(cover.title);
   const { mutate: updateCoverTitle } = useCoverUpdate();
@@ -13,7 +13,7 @@ export default function CoverHeader() {
       autoCorrect="on"
       spellCheck="true"
       type="text"
-      placeholder="Назва книги"
+      placeholder={i18n['Title']}
       value={title}
       className="mb-[3px] w-full rounded-md font-roslindaleCyrillic text-[2.5rem] leading-[1.2] hover:bg-surface-2"
       onChange={(e) => setTitle(e.target.value)}

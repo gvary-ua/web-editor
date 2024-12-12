@@ -7,7 +7,7 @@ import { editorBlockToDbBlock } from 'functions/mapper';
 import debounce from 'functions/useDebounce';
 
 export default function AliveEditorJs() {
-  const { activeChapter } = useContext(GlobalContext);
+  const { activeChapter, i18n } = useContext(GlobalContext);
 
   const {
     data: blocks,
@@ -43,6 +43,7 @@ export default function AliveEditorJs() {
   return (
     <Editor
       data={blocks as OutputData}
+      i18n={i18n['EditorJs']}
       onChange={debouncedSaveData}
       onDestroy={saveData}
       id={activeChapter?.id}

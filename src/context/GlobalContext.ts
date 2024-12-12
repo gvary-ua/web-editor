@@ -8,6 +8,8 @@ export type GlobalContextType = {
   chapters: Chapter[];
   activeChapter: undefined | Chapter;
   setActiveChapter: React.Dispatch<React.SetStateAction<undefined | Chapter>>;
+  i18n: any;
+  setI18n: React.Dispatch<React.SetStateAction<any>>;
 };
 
 export const GlobalContext = createContext<GlobalContextType | undefined>(undefined);

@@ -3,11 +3,13 @@ import { GlobalContext } from 'context/GlobalContext';
 import useCover from 'apis/useCover';
 import { useChaptersByCoverId } from 'apis/useChapters';
 import { Chapter } from 'apis/types/chapters';
+import { i18nEn } from 'components/LangSelector';
 
 export const GlobalContextProvider: React.FC = ({ children }: { children: any }) => {
   const urlParams = new URLSearchParams(window.location.search);
   const coverId = parseInt(urlParams.get('coverId'));
 
+  const [i18n, setI18n] = useState<any>(i18nEn);
   const [activeChapter, setActiveChapter] = useState<Chapter | undefined>(undefined);
   const { data: cover, isSuccess: isCoverSuccess } = useCover(coverId, {
     enabled: !isNaN(coverId),
@@ -45,6 +47,8 @@ export const GlobalContextProvider: React.FC = ({ children }: { children: any })
         chapters: chapters,
         activeChapter: activeChapter,
         setActiveChapter: setActiveChapter,
+        i18n: i18n,
+        setI18n: setI18n,
       }}
     >
       {children}

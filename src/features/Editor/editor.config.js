@@ -15,7 +15,7 @@ export const EDITOR_JS_TOOLS = {
     class: Header,
     inlineToolbar: true,
     config: {
-      placeholder: 'Enter a header....',
+      placeholder: 'Enter a header',
       levels: [1, 2, 3],
       defaultLevel: 2,
     },
@@ -24,7 +24,7 @@ export const EDITOR_JS_TOOLS = {
     class: Paragraph,
     inlineToolbar: true,
     config: {
-      placeholder: 'Enter a text....',
+      placeholder: 'Enter a text',
     },
   },
   list: {

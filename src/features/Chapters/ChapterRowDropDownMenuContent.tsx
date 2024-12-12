@@ -6,7 +6,7 @@ import { GlobalContext } from 'context/GlobalContext';
 import React, { useContext } from 'react';
 
 export default function ChapterRowDropDownMenuContent({ chapter }: { chapter: Chapter }) {
-  const { cover, chapters } = useContext(GlobalContext);
+  const { cover, chapters, i18n } = useContext(GlobalContext);
   const { mutate: deleteChapter } = useChapterDelete();
   const { mutate: updateCoverChapters } = useCoverUpdate();
 
@@ -41,13 +41,13 @@ export default function ChapterRowDropDownMenuContent({ chapter }: { chapter: Ch
         className={`cursor-pointer ${isMoveUpDisabled ? 'cursor-not-allowed text-[rgb(156,163,175)]' : ''}`}
         onClick={() => moveChapter('up')}
       >
-        Вгору
+        {i18n['Up']}
       </P>
       <P
         className={`mt-2 cursor-pointer ${isMoveDownDisabled ? 'cursor-not-allowed text-[rgb(156,163,175)]' : ''}`}
         onClick={() => moveChapter('down')}
       >
-        Вниз
+        {i18n['Down']}
       </P>
       <P
         className="mt-2 cursor-pointer text-error"
@@ -59,7 +59,7 @@ export default function ChapterRowDropDownMenuContent({ chapter }: { chapter: Ch
           }
         }}
       >
-        Видалити
+        {i18n['Delete']}
       </P>
     </div>
   );

@@ -7,6 +7,7 @@ import { OutputData } from '@editorjs/editorjs/types/data-formats';
 
 interface IEditor {
   data: OutputData;
+  i18n: any;
   onChange: (id: number, data: OutputData) => void;
   onDestroy: (id: number, data: OutputData) => void;
   id: number;
@@ -15,7 +16,7 @@ interface IEditor {
 // Note: At the moment EditorJS is recreated at every chapter change
 // It could lead to performance issues.
 // It would be cool to save it all somehow to not reinitilize
-const Editor: React.FC<IEditor> = ({ data, onChange, onDestroy, id }) => {
+const Editor: React.FC<IEditor> = ({ data, i18n, onChange, onDestroy, id }) => {
   const holderId = `editorjs-container-chapter-${id}`;
   useEffect(() => {
     const editor = new EditorJS({
@@ -32,6 +33,7 @@ const Editor: React.FC<IEditor> = ({ data, onChange, onDestroy, id }) => {
         const data = await api.saver.save();
         onChange(id, data);
       },
+      i18n: i18n,
     });
 
     return () => {
@@ -40,7 +42,7 @@ const Editor: React.FC<IEditor> = ({ data, onChange, onDestroy, id }) => {
         editor.destroy();
       }
     };
-  }, [id]);
+  }, [id, i18n]);
   return <div id={holderId} className="h-auto w-full" />;
 };
 
